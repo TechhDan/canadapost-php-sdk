@@ -11,8 +11,9 @@ Services:
 
 use TechDesign\CanadaPost\CanadaPost;
 
-$api = new CanadaPost($user, $password);
+$api = new CanadaPost($user, $password, $customer_number, $origin_postal_code);
 
-
+// returns SimpleXMLElement object
+$rates = $api->getRates();
 
 ```
