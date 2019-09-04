@@ -1,0 +1,24 @@
+{
+	"name": "CanadaPost-PHP-SDK",
+	"description": "Canada Post PHP API",
+	"authors": [
+		{
+			"name": "TechhDan",
+			"email": "admin@techdesign.io"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"TechDesign\\CanadaPost\\": "src/"
+		}
+	},
+	"autoload-dev": {
+    	"psr-4": {
+    		"Test\\": "tests/"
+    	}
+    },
+	"require-dev": {
+		"phpunit/phpunit": "^8.3",
+		"symfony/var-dumper": "^4.3"
+	}
+}
