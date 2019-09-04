@@ -1,7 +1,13 @@
 <phpunit bootstrap="vendor/autoload.php">
 	<testsuites>
 		<testsuite name="full">
-			<directory name="tests"></directory>
+			<directory>tests</directory>
 		</testsuite>
 	</testsuites>
+	<php>
+        <env name="API_USER" value="bab5b166eacf36a2" force="true" />
+        <env name="API_PASSWORD" value="25cb27d011b27d059d8c8f" force="true" />
+        <env name="CUSTOMER_NUMBER" value="0008848534" force="true" />
+        <env name="ORIGIN_POSTAL_CODE" value="H2B1A0" force="true" />
+    </php>
 </phpunit>
