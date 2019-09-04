@@ -30,4 +30,10 @@ class CanadaPostTest extends TestCase
         $rates = $this->api->getRates();
         $this->assertInstanceOf(SimpleXMLElement::class, $rates);
     }
+
+    public function testGetServices()
+    {
+        $services = $this->api->getServices();
+        $this->assertInstanceOf(SimpleXMLElement::class, $services);
+    }
 }

@@ -39,7 +39,22 @@ class CanadaPost
 		curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/vnd.cpc.ship.rate-v4+xml', 'Accept: application/vnd.cpc.ship.rate-v4+xml'));
 		$curl_response = curl_exec($curl);
 		$xml = simplexml_load_string($curl_response) or die("Error: Cannot create XML object");
+		return $xml;
+	}
 
+	public function getServices()
+	{
+		$service_url = 'https://ct.soa-gw.canadapost.ca/rs/ship/service';
+		$curl = curl_init($service_url);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
+		curl_setopt($curl, CURLOPT_CAINFO, realpath(__DIR__ . '/../resources/cert/cacert.pem'));
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+		curl_setopt($curl, CURLOPT_USERPWD, $this->user . ':' . $this->password);
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array('Accept:application/vnd.cpc.ship.rate-v4+xml'));
+		$curl_response = curl_exec($curl);
+		$xml = simplexml_load_string($curl_response) or die("Error: Cannot create XML object");
 		return $xml;
 	}
 }

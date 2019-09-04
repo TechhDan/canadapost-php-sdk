@@ -13,7 +13,8 @@ use TechDesign\CanadaPost\CanadaPost;
 
 $api = new CanadaPost($user, $password, $customer_number, $origin_postal_code);
 
-// returns SimpleXMLElement object
+// returns SimpleXMLElement objects
 $rates = $api->getRates();
+$services = $api->getServices();
 
 ```
