@@ -25,7 +25,7 @@ class CanadaPost
         $service_url = 'https://ct.soa-gw.canadapost.ca/rs/ship/price';
         $postal_code = 'K1K4T3';
         $weight = 1;
-        $xmlRequest = $this->getXmlRequest($this->customer_number, $weight, $this->origin_postal_code, $postal_code);
+        $xmlRequest = $this->getRatesXmlRequest($this->customer_number, $weight, $this->origin_postal_code, $postal_code);
 
         $curl = curl_init($service_url);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);

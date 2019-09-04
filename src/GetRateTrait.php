@@ -4,7 +4,7 @@ namespace TechDesign\CanadaPost;
 
 trait GetRateTrait
 {
-    function getXmlRequest($mailed_by, $weight, $origin_postal_code, $postal_code)
+    function getRatesXmlRequest($mailed_by, $weight, $origin_postal_code, $postal_code)
     {
         return $xmlRequest = <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
