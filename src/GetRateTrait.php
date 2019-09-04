@@ -4,9 +4,9 @@ namespace TechDesign\CanadaPost;
 
 trait GetRateTrait
 {
-	function getXmlRequest($mailed_by, $weight, $origin_postal_code, $postal_code)
-	{
-		return $xmlRequest = <<<XML
+    function getXmlRequest($mailed_by, $weight, $origin_postal_code, $postal_code)
+    {
+        return $xmlRequest = <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
 <mailing-scenario xmlns="http://www.canadapost.ca/ws/ship/rate-v4">
   <customer-number>{$mailed_by}</customer-number>
@@ -21,5 +21,5 @@ trait GetRateTrait
   </destination>
 </mailing-scenario>
 XML;
-	}
+    }
 }
