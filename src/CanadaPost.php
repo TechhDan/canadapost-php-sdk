@@ -38,7 +38,18 @@ class CanadaPost
         curl_setopt($curl, CURLOPT_USERPWD, $this->user . ':' . $this->password);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/vnd.cpc.ship.rate-v4+xml', 'Accept: application/vnd.cpc.ship.rate-v4+xml'));
         $curl_response = curl_exec($curl);
-        $xml = simplexml_load_string($curl_response) or die("Error: Cannot create XML object");
+
+        if ($curl_response === false) {
+            throw new CanadaPostException('cURL is unable to make request');
+        }
+        $xml = simplexml_load_string($curl_response);
+        if ($xml === false) {
+            throw new CanadaPostException('Unable to parse XML response');
+        }
+        if ((string) $xml->message->code[0] === 'E002') {
+            throw new CanadaPostException((string) $xml->message->description[0], 1);
+        }
+
         return $xml;
     }
 

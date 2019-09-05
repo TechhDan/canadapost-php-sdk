@@ -4,6 +4,7 @@ namespace Test;
 
 use PHPUnit\Framework\TestCase;
 use TechDesign\CanadaPost\CanadaPost;
+use TechDesign\CanadaPost\CanadaPostException;
 use SimpleXMLElement;
 
 class CanadaPostTest extends TestCase
@@ -35,5 +36,15 @@ class CanadaPostTest extends TestCase
     {
         $services = $this->api->getServices();
         $this->assertInstanceOf(SimpleXMLElement::class, $services);
+    }
+
+    public function testCanadaPostException()
+    {
+        $api = new CanadaPost('invalid', 'invalid');
+        try {
+            $rates = $api->getRates();
+        } catch (CanadaPostException $e) {
+            $this->assertSame($e->getCode(), CanadaPostException::E002);
+        }
     }
 }
